@@ -1,14 +1,13 @@
-name: Deploy
+name: Node.js App
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: $
-          heroku_app_name: ""
-          heroku_email: "admin@fooshika.com"
+      - name: Install Node.js
+        run: npm install
+      - name: Run Node.js
+        run: npm start
