@@ -1,14 +1,14 @@
-name: Node.js CI/CD
-on: [push]
-push:
-  branches: [main]
+name: Deploy
+on:
+  push:
+    branches: [main]
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Build and deploy
-        run: npm start
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "fooshika-app"
+          heroku_email: "admin@fooshika.com"
