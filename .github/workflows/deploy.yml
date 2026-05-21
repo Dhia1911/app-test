@@ -1,13 +1,14 @@
-name: Node.js App
-on:
-  push:
-    branches: [ main ]
-
+name: Node.js CI/CD
+on: [push]
+push:
+  branches: [main]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Node.js
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
         run: npm install
-      - name: Run Node.js
+      - name: Build and deploy
         run: npm start
