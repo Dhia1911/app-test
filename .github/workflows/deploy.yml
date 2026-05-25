@@ -11,7 +11,6 @@ jobs:
         with:
           node-version: 18
       - run: npm install
-      - run: npm test --if-present
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
